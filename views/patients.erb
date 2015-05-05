@@ -1,0 +1,9 @@
+<h1 class="page-header text-center">List of Patients</h1>
+
+<ul>
+
+<% @patients.each do |patient| %>
+<li><%= patient.name %></li>
+  <% end %>
+
+</ul>
