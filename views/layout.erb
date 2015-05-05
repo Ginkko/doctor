@@ -1,0 +1,33 @@
+<!Doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Doctor-O-Rama</title>
+  </head>
+  <body>
+    <div id="wrap" class="container">
+      <%= yield %>
+    </div>
+  </body>
+  <footer>
+    <row>
+      <div id ="footer">
+      <div class="text-center">
+      <div class="col-md-3">
+        <a href="/doctors">List of Doctors</a>
+      </div>
+      <div class="col-md-3">
+        <a href="/patients">List of Patients</a>
+      </div>
+      <div class="col-md-3">
+        <a href="/doctors/new">Add a Doctor</a>
+      </div>
+      <div class="col-md-3">
+        <a href="/patients/new">Add a Patient</a>
+      </div>
+      </div>
+      </div>
+    </row>
+  </footer>
+</html>
