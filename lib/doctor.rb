@@ -29,4 +29,11 @@ class Doctor
     results = DB.exec("INSERT INTO doctors (name, specialty) VALUES ('#{@name}', '#{@specialty}') RETURNING id;")
     @id = results.first.fetch('id').to_i
   end
+
+  def self.find(id)
+    result = DB.exec("SELECT * FROM doctors WHERE id = #{id};")
+    name = result.first.fetch("name")
+    specialty = result.first.fetch("specialty")
+    Doctor.new({:name => name, :specialty => specialty, :id => id.to_i})
+  end
 end
