@@ -29,6 +29,7 @@ get('/doctors/new') do
 end
 
 get('/patients') do
+  @patients = Patient.all()
   erb(:patients)
 end
 

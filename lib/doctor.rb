@@ -36,4 +36,8 @@ class Doctor
     specialty = result.first.fetch("specialty")
     Doctor.new({:name => name, :specialty => specialty, :id => id.to_i})
   end
+
+  def patient_add(patient_id)
+    DB.exec("UPDATE patients SET doctor_id = #{@id} WHERE id = #{patient_id};")
+  end
 end

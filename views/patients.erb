@@ -3,7 +3,7 @@
 <ul>
 
 <% @patients.each do |patient| %>
-<li><%= patient.name %></li>
+<li><a href="/patients/<%= patient.id %>"><%= patient.name %></a></li>
   <% end %>
 
 </ul>
