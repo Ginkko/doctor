@@ -32,4 +32,13 @@ class Patient
     result = DB.exec("INSERT INTO patients (name, birthdate) VALUES ('#{@name}', '#{@birthdate}') RETURNING id;")
     @id = result.first.fetch("id").to_i
   end
+
+  def self.find(id)
+    result = DB.exec("SELECT * FROM patients WHERE id = #{id};")
+    name = result.first.fetch("name")
+    birthdate = result.first.fetch("birthdate")
+    doctor_id = result.first["doctor_id"]
+    Patient.new({:name => name, :birthdate => birthdate, :id => id.to_i, :doctor_id => doctor_id})
+
+  end
 end
