@@ -1,10 +1,10 @@
 <h1 class ="text-center page-header">Doctor Details for <%= @doctor.name %></h1>
 
 <h4>Name: <%= @doctor.name %></h4>
-<h4>Specialty: <%= @doctor.birthdate %></h4>
+<h4>Specialty: <%= @doctor.specialty %></h4>
 <h4>Patients:</h4>
 <ul>
-  <% @doctor.patients.each do |patient| %>
+  <% @doctor.patients.each do |patient| %>  
     <li><%= patient.name %></li>
   <% end %>
 </ul>

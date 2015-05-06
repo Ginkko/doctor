@@ -32,7 +32,8 @@ end
 post('/doctor/new/:patient_id') do
   patient_id = params.fetch('patient_id').to_i
   @doctor = Doctor.find(params.fetch("doctors").to_i)
-  erb(:index)
+  @doctor.patient_add(patient_id)
+  erb(:doctor)
 end
 
 get('/patients') do
@@ -48,12 +49,12 @@ post('/patients') do
   erb(:patients)
 end
 
+get('/patients/new') do
+  erb(:patient_add)
+end
+
 get('/patients/:id') do
   @patient = Patient.find(params.fetch('id'))
   @doctors = Doctor.all()
   erb(:patient)
-end
-
-get('/patients/new') do
-  erb(:patient_add)
 end
