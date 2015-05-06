@@ -40,4 +40,18 @@ class Doctor
   def patient_add(patient_id)
     DB.exec("UPDATE patients SET doctor_id = #{@id} WHERE id = #{patient_id};")
   end
+
+  def patients
+    patients = []
+    all_patients = DB.exec("SELECT * FROM patients;")
+    results = DB.exec("SELECT * FROM patients WHERE doctor_id = #{@id};")
+    results.each do |result|
+      name = result.fetch('name')
+      birthdate = result.fetch('birthdate')
+      doctor_id = result.fetch('doctor_id').to_i
+      id = result.fetch('id').to_i
+      patients.push(Patient.new({:name => name, :id => id, :birthdate => birthdate, :doctor_id => doctor_id}))
+    end
+    patients
+  end
 end

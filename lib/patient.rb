@@ -29,7 +29,11 @@ class Patient
   end
 
   def save
-    result = DB.exec("INSERT INTO patients (name, birthdate) VALUES ('#{@name}', '#{@birthdate}') RETURNING id;")
+    if @doctor_id == nil
+      result = DB.exec("INSERT INTO patients (name, birthdate) VALUES ('#{@name}', '#{@birthdate}') RETURNING id;")
+    else
+      result = DB.exec("INSERT INTO patients (name, birthdate, doctor_id) VALUES ('#{@name}', '#{@birthdate}', #{@doctor_id}) RETURNING id;")
+    end
     @id = result.first.fetch("id").to_i
   end
 

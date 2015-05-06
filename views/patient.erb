@@ -1,0 +1,15 @@
+<h1 class ="text-center page-header">Patient Details for <%= @patient.name %></h1>
+
+<h4>Name: <%= @patient.name %></h4>
+<h4>Birthdate: <%= @patient.birthdate %></h4>
+
+<form action="/doctor/new/<%= @patient.id %>" method="post">
+  <div class="form-group">
+    <select id="doctors" name="doctors">
+      <% @doctors.each do |doctor| %>
+        <option value="<%= doctor.id %>"> <%= doctor.name %></option>
+      <% end %>
+    </select>
+  </div>
+<button id="submit" type="submit" class="btn btn-info">Save</button>
+</form>
